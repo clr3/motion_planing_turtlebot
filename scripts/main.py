@@ -1,14 +1,14 @@
 #! /usr/bin/env python
 
 import rospy
-
+import actionlib
 #from std_srvs.srv import Trigger, TriggerRequest
 #from .msg import record_odomGoal, record_odomFeedback, record_odomResult, record_odomAction
 #from cmd_vel_pub import CmdVelPub
-#import odom_subrcriber.py 
-#import calculate_direction.py
-#import laser_subscriber.py
-#import movement_publisher.py
+from motion_planing_turtlebot import odom_subrcriber
+#import calculate_direction
+#import laser_subscriber
+#import movement_publisher
 
 #Connects all the classes 
 #
@@ -32,11 +32,11 @@ class ControlTurtle():
     
 	#Create an object of the calculate_direction 
     def init_calculate_direction(self):
-        self._calculate_direction_object = CalculateDirection(object, self._x_goal, self._y_goal)
+        self._calculate_direction_object = CalculateDirection(self._x_goal, self._y_goal)
     
 	#Create an object of the laser_subscriber 
     def init_laser_subscriber(self):
-        self._laser_subscriber_object = LaserScanReader(object, self._x_goal, self._y_goal)
+        self._laser_subscriber_object = LaserScanReader(self._x_goal, self._y_goal)
 
 	#Create an object of the laser_subscriber
     def init_movement_publisher(self):
