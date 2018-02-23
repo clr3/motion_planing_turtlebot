@@ -1,0 +1,22 @@
+<launch>
+
+  <node pkg ="motion_planing_turtlebot"
+        type="movement_publisher.py"
+        name="mov_publisher_node"
+        output="screen">
+  </node>
+  
+  <node pkg ="my_turtlebot"
+        type="crash_detection_srv.py"
+        name="crash_detection_srv"
+        output="screen">
+  </node>
+
+  <node pkg ="my_turtlebot"
+        type="main.py"
+        name="turtlebot_main_node"
+        output="screen">
+  </node>
+
+
+</launch>

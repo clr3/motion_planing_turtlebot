@@ -1,0 +1,30 @@
+<launch>
+
+  <node pkg ="motion_planing_turtlebot"
+        type="main.py"
+        name="turtle_main_node"
+        output="screen">
+  </node>
+
+
+  <node pkg ="motion_planing_turtlebot"
+        type="movement_publisher.py"
+        name="mov_publisher_node"
+        output="screen">
+  </node>
+
+
+  <node pkg ="motion_planing_turtlebot"
+        type="laser_subscriber.py"
+        name="laserscan_sub_node"
+        output="screen">
+  </node>
+
+
+  <node pkg ="motion_planing_turtlebot"
+        type="odom_subscriber.py"
+        name="odom_topic_sub_node"
+        output="screen">
+  </node>
+
+</launch>
