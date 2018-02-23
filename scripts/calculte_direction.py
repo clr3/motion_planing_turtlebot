@@ -8,7 +8,7 @@ import rospy
 #
 #It calculates the best direction to move next
 
-class CalculateDirection(x_goal, y_goal):
+class CalculateDirection():
     def __init__(self, x_goal, y_goal):
 	self._x_goal = x_goal
 	self._y_goal = y_goal
