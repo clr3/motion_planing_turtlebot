@@ -15,14 +15,14 @@ class CalculateDirection():
 	self._goal_angle = 360 		#Initialize the angle 
 	self._x_axis = 0.0
 	self._y_axis = 0.0
-	self._distance = 0.0
+	self._goal_distance = 0.0
 
 
     #Calculates the distance to the goal from current position
     def distance_to_goal(x_position, y_position):	
 	self._x_axis = self._x_goal - x_position
 	self._y_axis = self-_y_goal - y_position
-	self._distance = round(Math.sqrt( pow(x_axis,2) + pow(y_axis,2) ) , 4) #Number rounded to 4 decimal places	
+	self._goal_distance = round(Math.sqrt( pow(x_axis,2) + pow(y_axis,2) ) , 4) #Number rounded to 4 decimal places	
 
 
     #Returns the angle at which the goal is
@@ -42,7 +42,7 @@ class CalculateDirection():
         return self._goal_angle
        
 
-    def get_distance()
-	return self._distance
+    def get_goal_distance()
+	return self._goal_distance
 
 
