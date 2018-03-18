@@ -66,7 +66,7 @@ class LaserScanReader():
 
 if __name__ == "__main__":
     rospy.init_node('laserscan_sub_node')		#Creating the node
-    laserscan_sub_object = LaserScanReader(0.0,0.0)	#Initialize with the values for the goal
+    laserscan_sub_object = LaserScanReader()	#Initialize with the values for the goal
     rospy.loginfo(laserscan_sub_object.topic_callback())  #Log 
     rate = rospy.Rate(0.5)
 
