@@ -4,8 +4,11 @@ import rospy
 from sensor_msgs.msg import LaserScan
 
 #This class recieves data from the scanner
-# Angles are given in radians by sensor_msgs.LaserScan
 # 
+#Angles are given in radians by sensor_msgs.LaserScan
+# 
+# To change the amount of readings just edit: self._angles_array
+#
 # For the robot in gazebo:
 # angle_min: -1.57079994678
 # angle_max: 1.57079994678
@@ -14,20 +17,18 @@ from sensor_msgs.msg import LaserScan
 #
 
 class LaserScanReader():
-    def __init__(self, x_goal, y_goal, topic_name = '/scan'):		#'/scan' is the topic that publishes LaserScan
+    def __init__(self, x_goal, y_goal, topic_name = '/scan'):		#'/scan' is the topic that publisher LaserScan
         self._topic_name = topic_name
-        self._sub = rospy.Subscriber(self._topic_name, LaserScan, self.topic_callback()) # !!!topic_callback needs an argument (msg)   
+        self._sub = rospy.Subscriber(self._topic_name, LaserScan, self.topic_callback(msg))
 	self._threshold = 1		
 	self._x_goal = x_goal
 	self._y_goal = y_goal
-	#This will be a copy of LaserScan.ranges[]
-	self._scanner_array = []	
+	#Initialize an ampty array to copy LaserScan.ranges[]
+	self._scanner_arrary = msg.ranges
 	#This array will hold values for every 10 deg:
 	#Degrees are measured from the right, anticlockwise
-	self._anlges_array = [0,10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170,180]	
-	#Initialize empty array that will hold the readings from laserscan at each angle:
-	self._angles = []		
-	
+	self._angles_array = [0,30,60,90,120,150,180]	
+	self._scans = []
 					
         
     def topic_callback(self, msg):
@@ -37,13 +38,22 @@ class LaserScanReader():
 	self._arr_size = len(self._scanner_array)
  	return 
 	
-	#Will create an array wich containt laser scan values at various degrees
-    def create_angles_array(self):
-	to
 
-    def get_angles(self):
-	create_angles_array()
-	return self._angles
+    #Will return an array wich contains laser scan values at various degrees (this will be the distance from the object
+    def create_angles_array(self):
+
+	#How many angles will be checked depending in the _angles_array length:
+	measuerements = len(self._angles_array)	-1 	#Take -1 because of the angle at 0 degrees
+
+	read = self._arra_size / measurements 
+	read_now = 0
+
+	for x (0, measuerements)
+	    self._scans = [self.scanner_array[read_now]]
+	    read_now += read
+
+	return self._scans
+
 
     def shutdownhook():
         global ctrl_c
