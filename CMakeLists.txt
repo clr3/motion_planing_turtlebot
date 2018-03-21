@@ -14,6 +14,7 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
   message_generation
   motion_planing_turtlebot
+  /home/cristinarivera/catkin_ws/src
 )
 
 ## System dependencies are found with CMake's conventions
@@ -124,6 +125,7 @@ catkin_package(
 include_directories(
 # include
   ${catkin_INCLUDE_DIRS}
+  /home/cristinarivera/catkin_ws/src
 )
 
 ## Declare a C++ library
