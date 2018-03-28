@@ -1,4 +1,4 @@
-# Reactive motion planning
+# Reactive motion planning - Potential Field Method
 # motion_planing_turtlebot
 
 Using potential field aproach
