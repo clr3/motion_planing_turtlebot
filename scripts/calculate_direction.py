@@ -72,8 +72,8 @@ class CalculateDirection():
 	    self._y_components[x] = y_curr + (objects_array[x] * math.sin(yaw + angle))
 	    
 	    if objects_array[x] < self._obj_min_distance:   #If the robot is to close to the object the force will be high.
-		self._dx_components[x] = (-200) * (self._x_components[x]) * math.cos(angle)
-		self._dy_components[x] = (-200) * math.sin(angle)
+		self._dx_components[x] = (-150) * (self._x_components[x]) * math.cos(angle)
+		self._dy_components[x] = (-150) * math.sin(angle)
 	    
 	    elif objects_array[x] < self._obj_effect_radius:	#If the robot is inside the theshhold.Set a scaling force
 		self._dx_components[x] = (-30) * (self._x_components[x] - self._obj_min_distance) * math.cos(angle)
@@ -96,10 +96,9 @@ class CalculateDirection():
       self._Y = 0
 
       for x in range(0, len(self._angles)-1):
-	self._X += self._dx_components[x]
-	self._Y += self._dy_components[x]
+	  self._X += self._x_components[x]
+	  self._Y += self._y_components[x]
 
-      rospy.loginfo('Total X: {:.2f}  Y: {:.2f} '.format(self._X, self._Y))
 
       self._Angle = math.atan2(self._X, self._Y)		#angle in radians
 
@@ -110,17 +109,31 @@ class CalculateDirection():
       if (math.pi /2) < self._Angle < (math.pi):		#Between 90 and 180 deg:
         mag = self._Y / math.sin(math.pi - self._Angle)
       if (-math.pi/2) > self._Angle > (math.pi):		#Between 180 and 270 deg:
-	mag = self._Y / math.sin(self._Angle)
+	mag = self._Y / math.sin(math.pi + self._Angle)
       if 0 > self._Angle > (-math.pi /2):			#Between 270 and 360 deg:
-	mag = self._Y / math.sin(-self._Angle)
+	mag = self._Y / math.sin(self._Angle)
 
       self._Magnitude = mag
-      print "Magnitude: " + str(self._Magnitude)
-      print "Angle: " + str(self._Angle)
-
+     
 
     def get_magnitude(self):
       return self._Magnitude
 	
     def get_angle(self):
-      return self._Angle
+      return self._Angle  
+
+    def get_x(self):
+      return self._X  
+
+    def get_y(self):
+      return self._Y
+
+    def log_forces(self):
+        print "Magnitude: " + str(self._Magnitude)
+      	print "Angle: " + str(self._Angle)
+
+   	for x in range(0, len(self._angles)-1):
+	  ang = self._angles[x]	
+	  xx = self._x_components[x]
+	  y = self._y_components[x]
+	  rospy.loginfo('[ {:.2f} DEG ] -> X: {:.2f} Y: {:.2f} '.format(ang, xx,y))
