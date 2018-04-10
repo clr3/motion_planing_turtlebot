@@ -25,7 +25,7 @@ class CalculateDirection():
 	self._dx_components = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 	self._dy_components = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 
-	self._obj_effect_radius = 5	#Repulsive force doesnt't exist outside it's threshhold
+	self._obj_effect_radius = 6	#Repulsive force doesnt't exist outside it's threshhold
 	self._obj_min_distance = 0.8	#Repulsive force will be infinite if the bot gets too close to an object.
 
 	#Variables to hold the final calculation:
@@ -72,12 +72,12 @@ class CalculateDirection():
 	    self._y_components[x] = y_curr + (objects_array[x] * math.sin(yaw + angle))
 	    
 	    if objects_array[x] < self._obj_min_distance:   #If the robot is to close to the object the force will be high.
-		self._dx_components[x] = (-150) * (self._x_components[x]) * math.cos(angle)
-		self._dy_components[x] = (-150) * math.sin(angle)
+		self._dx_components[x] = (-50) * (self._x_components[x]) * math.cos(angle)
+		self._dy_components[x] = (-50) * (self._x_components[x]) * math.sin(angle)
 	    
 	    elif objects_array[x] < self._obj_effect_radius:	#If the robot is inside the theshhold.Set a scaling force
-		self._dx_components[x] = (-30) * (self._x_components[x] - self._obj_min_distance) * math.cos(angle)
-		self._dy_components[x] = (-30) * (self._y_components[x] - self._obj_min_distance) * math.sin(angle)
+		self._dx_components[x] = (-15) * (self._x_components[x] - self._obj_min_distance) * math.cos(angle)
+		self._dy_components[x] = (-15) * (self._y_components[x] - self._obj_min_distance) * math.sin(angle)
 
 	    else:		#If the robot is far from the object it wont be affected by it
 		self._dx_components[x] = 0
