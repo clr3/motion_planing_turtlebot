@@ -16,7 +16,7 @@ from sensor_msgs.msg import LaserScan
 arr_size = 0
 _scanner_array = []
 #This array will hold values for every 10 deg:
-#Degrees are measured from the right, anticlockwise
+#Degrees are measured from left to right, clockwise
 angles_array = [0,10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170,180]
 # number of angles we want :	
 _no_of_measurements = 19
