@@ -107,7 +107,7 @@ if __name__ == "__main__":
 	#Odometry test:    	
 	#myturtletest_object.odom_readings()
 	#Calculate direction test:    	
-	myturtletest_object.calculate_dir()
+	#myturtletest_object.calculate_dir()
 	#Movement:    	
 	#myturtletest_object.movement_pub()
 	
