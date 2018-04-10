@@ -1,0 +1,11 @@
+<launch>
+
+<!-- Aimless movement -->
+
+  <node pkg="motion_planing_turtlebot" 
+	type="main_test.py" 
+	name="turtle_test_node"  
+	output="screen">
+  </node>
+
+</launch>
